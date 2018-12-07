@@ -11,6 +11,7 @@ using namespace std;
 class Iterator;
 class NullIterator;
 class UnaryIterator;
+class Visitor;
 
 //Abstract Base Class
 class Base {
@@ -73,7 +74,7 @@ class UnaryOperator: public Base {
         virtual double evaluate() = 0;	//Note: this is implicit in the inheritance, but can also be made explicit
         Iterator* create_iterator();
 
-        virual void accept(Visitor*) = 0;
+        virtual void accept(Visitor*) = 0;
 };
 
 //Composite Classes

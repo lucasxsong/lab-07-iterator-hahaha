@@ -1,5 +1,7 @@
 #include "composite.h"
 #include "iterator.h"
+#include "visitor.h"
+
 //--------------------------------------------------------------------------
 // Op Class
 //--------------------------------------------------------------------------
@@ -45,7 +47,7 @@ Add::Add(Base* left, Base* right) : Operator(left,right) { };
 void Add::print() { cout << "+"; }
 double Add::evaluate() { return this->left->evaluate() + this->right->evaluate(); };
 
-void Op::accept(Visitor* c) {
+void Add::accept(Visitor* c) {
     c->addNode();
 }
 
@@ -58,7 +60,7 @@ Sub::Sub(Base* left, Base* right) : Operator(left,right) { };
 void Sub::print() { cout << "-"; }
 double Sub::evaluate() { return this->left->evaluate() - this->right->evaluate(); };
 
-void Op::accept(Visitor* c) {
+void Sub::accept(Visitor* c) {
     c->subNode();
 }
 
@@ -71,7 +73,7 @@ Mult::Mult(Base* left, Base* right) : Operator(left,right) { };
 void Mult::print() { cout << "*"; }
 double Mult::evaluate() { return this->left->evaluate() * this->right->evaluate(); };
 
-void Op::accept(Visitor* c) {
+void Mult::accept(Visitor* c) {
     c->multNode();
 }
 
@@ -84,7 +86,7 @@ Sqr::Sqr(Base* child) : UnaryOperator(child) { };
 void Sqr::print() { cout << "^2"; }
 double Sqr::evaluate() { return pow(this->child->evaluate(),2); };
 
-void Op::accept(Visitor* c) {
+void Sqr::accept(Visitor* c) {
     c->sqrNode();
 }
 
@@ -97,6 +99,6 @@ Root::Root(Base* child) : UnaryOperator(child) { };
 void Root::print() { cout << "ROOT"; }
 double Root::evaluate() { return this->child->evaluate(); };
 
-void Op::accept(Visitor* c) {
+void Root::accept(Visitor* c) {
     c->rootNode();
 }
