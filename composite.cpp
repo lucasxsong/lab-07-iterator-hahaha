@@ -15,7 +15,7 @@ double Op::evaluate() { return this->value; };
 Iterator* Op::create_iterator() { return new NullIterator(this); }
 
 void Op::accept(Visitor* c) {
-    c->opNode(this);
+    //c->opNode(this);
 }
 
 //--------------------------------------------------------------------------
