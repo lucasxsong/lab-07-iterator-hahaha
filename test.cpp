@@ -80,11 +80,10 @@ TEST(Visitor, testCaseOne) {
     Base* four = new Sqr(two);
     Base* root3 = new Root(four);
     Iterator* i = new PreorderIterator(root3);
-    i->first();
-    EXPECT_EQ(4,i->current()->evaluate());
-    i->next();
-    EXPECT_EQ(2,i->current()->evaluate());
+    string s = v->returnOutput();
+    EXPECT_EQ("", s);
 }
+
 
 
 int main(int argc, char **argv) {

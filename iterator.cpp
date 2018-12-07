@@ -54,6 +54,8 @@ void PreorderIterator::next() {
         root2= new UnaryIterator(selfCopy);
     else
         root2 = new NullIterator(selfCopy);
+
+    selfCopy->accept(v);
     
     
     //cout<<iterators.top()->self()->evaluate()<<endl;

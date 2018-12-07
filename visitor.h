@@ -34,8 +34,8 @@ class PrintVisitor : public Visitor {
 		void subNode(); //For visiting a subtraction node
 		void addNode(); //For visiting an add node
 		void opNode(Op* op); //For visiting a leaf node
-
 		void execute(); //Prints all visited nodes
+		string returnOutput();
 };
 
 #endif

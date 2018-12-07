@@ -35,3 +35,7 @@ void PrintVisitor::opNode(Op* op) {
 void PrintVisitor::execute() {
     cout << output << endl;
 }
+
+string PrintVisitor::returnOutput() {
+    return output;
+}

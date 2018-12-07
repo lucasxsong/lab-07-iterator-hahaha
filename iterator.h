@@ -7,6 +7,7 @@ class Iterator {
     protected:
         Base* self_ptr;
         Base* current_ptr;
+        Visitor* v;
     public:
         Iterator(Base* ptr);
         Iterator(const Iterator & obj){
@@ -25,6 +26,9 @@ class Iterator {
         }
         /* Return the element the iterator is currently at */
         virtual Base* current() = 0;
+        Visitor* returnVisitor() {
+            return v;
+        }
 };
 /**
  * The OperatorIterator will be used to iterate over 
