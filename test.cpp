@@ -75,6 +75,18 @@ TEST(unaryIterator, testCaseThree){
     EXPECT_EQ(6,i->current()->evaluate());
 }
 
+TEST(Visitor, testCaseOne) {
+    Base* two =  new Op(2);
+    Base* four = new Sqr(two);
+    Base* root3 = new Root(four);
+    Iterator* i = new PreorderIterator(root3);
+    i->first();
+    EXPECT_EQ(4,i->current()->evaluate());
+    i->next();
+    EXPECT_EQ(2,i->current()->evaluate());
+}
+
+
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
