@@ -2,7 +2,7 @@
 #include "composite.h"
 #include "iterator.h"
 
-TEST(six, first){
+TEST(PreOrdererIterator, testCaseOne){
 	Base* one =  new Op(1);
 	Base* two =  new Op(2);
 	Base* three =  new Add(one,two);
@@ -12,7 +12,20 @@ TEST(six, first){
 	i->first(); 
         EXPECT_EQ(6,i->current()->evaluate());
 }
-TEST(six, next){
+
+TEST(PreOrdererIterator, testCaseTwo){
+        Base* one =  new Op(2);
+        Base* two =  new Op(4);
+        Base* three =  new Add(one,two);
+        Base* six = new Mult(three,two);
+        Base* root = new Root(six);
+        Iterator* i = new PreorderIterator(root);
+        i->first();
+        EXPECT_EQ(24,i->current()->evaluate());
+}
+
+
+TEST(PreOrdererIterator, testCaseThree){
 	Base* one =  new Op(1);
 	Base* two =  new Op(2);
 	Base* three =  new Add(one,two);
@@ -29,17 +42,39 @@ TEST(six, next){
 	i->next();
 	EXPECT_EQ(2,i->current()->evaluate());
 }
-TEST(sqrFour, firstAndNext){
+TEST(unaryIterator, testCaseOne){
     Base* two =  new Op(2);
     Base* four = new Sqr(two);
     Base* root3 = new Root(four);
     Iterator* i = new PreorderIterator(root3);
-	
-	i->first();
-	EXPECT_EQ(4,i->current()->evaluate());
-	i->next();
-	EXPECT_EQ(2,i->current()->evaluate());
+    i->first();
+    EXPECT_EQ(4,i->current()->evaluate());
+    i->next();
+    EXPECT_EQ(2,i->current()->evaluate());
 }
+
+TEST(unaryIterator, testCaseTwo){
+    Base* two =  new Op(2);
+    Base* four = new Sqr(two);
+    Base* root3 = new Root(four);
+    Iterator* i = new PreorderIterator(root3);
+    i->first();
+    EXPECT_EQ(4,i->current()->evaluate());
+    i->next();
+    EXPECT_EQ(2,i->current()->evaluate());
+}
+
+TEST(unaryIterator, testCaseThree){
+    Base* two =  new Op(6);
+    Base* four = new Sqr(two);
+    Base* root3 = new Root(four);
+    Iterator* i = new PreorderIterator(root3);
+    i->first();
+    EXPECT_EQ(36,i->current()->evaluate());
+    i->next();
+    EXPECT_EQ(6,i->current()->evaluate());
+}
+
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
