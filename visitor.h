@@ -19,6 +19,7 @@ class Visitor {
 		virtual void addNode() = 0;
 		virtual void opNode(Op* op) = 0;
 		virtual void execute() = 0;
+		virtual string returnOutput() = 0;
 };
 
 class PrintVisitor : public Visitor {

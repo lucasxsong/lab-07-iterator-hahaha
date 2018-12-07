@@ -1,6 +1,7 @@
 #include "gtest/gtest.h"
 #include "composite.h"
 #include "iterator.h"
+#include "visitor.h"
 
 TEST(PreOrdererIterator, testCaseOne){
 	Base* one =  new Op(1);
@@ -80,6 +81,7 @@ TEST(Visitor, testCaseOne) {
     Base* four = new Sqr(two);
     Base* root3 = new Root(four);
     Iterator* i = new PreorderIterator(root3);
+    Visitor* v = i->returnVisitor();
     string s = v->returnOutput();
     EXPECT_EQ("", s);
 }

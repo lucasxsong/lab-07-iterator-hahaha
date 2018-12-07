@@ -11,7 +11,7 @@ composite.h
 composite.cpp
 iterator.h
 iterator.cpp
-
+visitor.cpp
 )
 
 TARGET_LINK_LIBRARIES(test gtest)
